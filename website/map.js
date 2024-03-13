@@ -291,6 +291,7 @@ function ready(error, topo, markers) {
             })
             .attr("d", path)
 
+            
           .attr("stroke-opacity", 0.1)
           .style("stroke", "gray")
           .attr("class", function(d){ return "Country" } )
