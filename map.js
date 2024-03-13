@@ -28,7 +28,7 @@ var info_games = d3.select("#logo_games")
         .attr("height", 250)
         .attr("transform", "translate("+ (width_adjusted/2 - 750/2) + ","+ 10 +")");
 
-// function to update header
+// function to update games header
 function upload_info_games(year, city, country, edition, season, n_countries, n_athletes) {
   info_games.selectAll("text").remove();
   info_games.selectAll("image").remove();
@@ -218,7 +218,7 @@ svg.call(tip2);
 // Load external data and boot
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-    .defer(d3.json, "/website/host_cities_markers.json")
+    .defer(d3.json, "/website/data/host_cities_markers.json")
     .defer(d3.csv, "/website/data/regions_participants3.csv",
         function(d) { // load data from csv
             if ('$' + d.Year in full_data){

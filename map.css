@@ -3,7 +3,7 @@ div.fixed {
   top: 0;
   right: 0;
   height: 100vh;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   overflow-y: scroll;
 }
 
@@ -12,7 +12,7 @@ div.fixed_legend {
   top: 0;
   right: 200px;
   height: 100vh;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   overflow-y: visible;
 }
 
@@ -20,7 +20,7 @@ div.fixed_seasons {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   overflow-y: visible;
 }
 
@@ -28,13 +28,13 @@ div.fixed_title {
   position: fixed;
   top: 0;
   right: 1;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255, 255, 255, 1);
   overflow-y: visible;
 }
 
 .title {
-    font-size: 16px;
-    font-family: Oswald;
+  font-size: 16px;
+  font-family: Oswald;
 }
 
 .countries {
@@ -43,34 +43,34 @@ div.fixed_title {
   stroke-linejoin: round;
 }
 .legendThreshold {
-    font-size: 12px;
-    font-family: Oswald;
+  font-size: 12px;
+  font-family: Oswald;
 }
 
 .axis .tick line {
-      stroke-width: 1px;
-      stroke: rgba(0,0,0,0.1);
-    }
-
-.axis .domain{
-  stroke-width: 25px;
-  stroke: rgba(212,212,212,0.3);
+  stroke-width: 1px;
+  stroke: rgba(0, 0, 0, 0.1);
 }
 
-.sport{
-    font-size: 14px;
-    font-family: Oswald;
+.axis .domain {
+  stroke-width: 25px;
+  stroke: rgba(212, 212, 212, 0.3);
+}
+
+.sport {
+  font-size: 14px;
+  font-family: Oswald;
 }
 
 .sportLegend {
-    font-size: 12px;
-    font-family: Oswald;
+  font-size: 12px;
+  font-family: Oswald;
 }
 
 .caption {
-    fill: #000;
-    text-anchor: start;
-    font-weight: bold;
+  fill: #000;
+  text-anchor: start;
+  font-weight: bold;
 }
 
 .infoTitle {
@@ -79,108 +79,108 @@ div.fixed_title {
 }
 
 .d3-tip {
-line-height: 1;
-font-size: 12px;
-font-family: sans-serif;
-padding: 8px;
-background: rgba(255, 255, 255, 0.8);
-color: #000;
-border-radius: 2px;
+  line-height: 1;
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border-radius: 2px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-box-sizing: border-box;
-display: inline;
-font-size: 6px;
-width: 100%;
-line-height: 1;
-color: rgba(255, 255, 255, 0.8);
-content: "\25BC"; /* \25B2 - triangle up */
-position: absolute;
-text-align: center;
+  box-sizing: border-box;
+  display: inline;
+  font-size: 6px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+  content: "\25BC"; /* \25B2 - triangle up */
+  position: absolute;
+  text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
-margin: -1px 0 0 0;
-top: 100%;
-left: 0;
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }
 
 .d3-tip2 {
-line-height: 1;
-font-size: 12px;
-font-family: sans-serif;
-padding: 8px;
-background: rgba(0, 0, 0, 0.8);
-color: #FFF;
-border-radius: 2px;
+  line-height: 1;
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip2:after {
-box-sizing: border-box;
-display: inline;
-font-size: 6px;
-width: 100%;
-line-height: 1;
-color: rgba(0, 0, 0, 0.8);
-content: "\25BC";
-position: absolute;
-text-align: center;
+  box-sizing: border-box;
+  display: inline;
+  font-size: 6px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip2.n:after {
-margin: -1px 0 0 0;
-top: 100%;
-left: 0;
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }
 
 .d3-tip3 {
-line-height: 1;
-font-size: 12px;
-font-family: sans-serif;
-padding: 8px;
-background: rgba(255, 255, 255, 0.8);
-color: #000;
-border-radius: 2px;
+  line-height: 1;
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border-radius: 2px;
 }
 
 .d3-tip4 {
-line-height: 1;
-font-size: 12px;
-font-family: sans-serif;
-padding: 8px;
-background: rgba(0, 0, 0, 0.3);
-color: #FFF;
-border-radius: 2px;
+  line-height: 1;
+  font-size: 12px;
+  font-family: sans-serif;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border-radius: 2px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip4:after {
-box-sizing: border-box;
-display: inline;
-font-size: 6px;
-width: 100%;
-line-height: 1;
-color: rgba(0, 0, 0, 0.3);
-content: "\25BC";
-position: absolute;
-text-align: center;
+  box-sizing: border-box;
+  display: inline;
+  font-size: 6px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.3);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip4.n:after {
-margin: -1px 0 0 0;
-top: 100%;
-left: 0;
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }
 
-.continentLegend{
-font-size: 12px;
-font-family: sans-serif;
+.continentLegend {
+  font-size: 12px;
+  font-family: sans-serif;
 }
 
 .myCircleTimeline {
@@ -194,14 +194,13 @@ font-family: sans-serif;
 }
 
 .myCircleMedals {
-    stroke-width: 0.5px;
-    stroke: rgba(255,255,255,0);
-  }
+  stroke-width: 0.5px;
+  stroke: rgba(255, 255, 255, 0);
+}
 
 .headertekst {
-
-      text-align: center;
-      width:80%;
-      font-family: Oswald;
-      font-size: 25px;
-    }
+  text-align: center;
+  width: 80%;
+  font-family: Oswald;
+  font-size: 25px;
+}

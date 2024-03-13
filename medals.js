@@ -215,32 +215,6 @@ function update_sports(year, season) {
     // Adapt height svg to avoid extra blank space
     svg_svg3.attr("height", function(){return height_svg3(); });
 
-    // Pictograms of sports
-    svg3.selectAll("sportNames").remove()
-      .data(sports_list)
-      .enter()
-      .append("svg:image")
-        .attr("x", function(d,i){
-          return deltaXText + text_x_pos(i)})
-        .attr("y", function(d,i){return 10 + text_y_pos(i)}) // 100 is where the first dot appears. 25 is the distance between dots
-        .attr('width', 90)
-        .attr('height', 90)
-        .attr("xlink:href", function(d) {
-          return "sports_picto/" + d + ".jpeg"
-        })
-        .on("mouseover", sport_tip.show)
-        .on("mouseleave", sport_tip.hide)
-        .on("click", function(s){
-          // on click, show events
-          display_sport_detail(game,data[game][s]);
-          d3.json("/website/data/info_sports.json", function(info) {
-                  update_bars(info[year][s], s);
-                  });
-          d3.json("/website/data/medals_country.json", function(top) {
-                  update_top_countries(top[year][s]);
-                });
-          });
-
     // Initial text next to pictograms
     svg_bars.append("text")
               .attr("class", "sport_information")
