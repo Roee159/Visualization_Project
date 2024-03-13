@@ -54,7 +54,7 @@ var clickYear = function(d){
 
       load_data();
       //update_medals(year);
-      update_sports(year, season);
+      //update_sports(year, season);
       update_title(year, city, country);
       d3.queue()
           .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
