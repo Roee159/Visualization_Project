@@ -1,0 +1,10 @@
+.DS_Store
+.ipynb_checkpoints
+*.icloud
+website/data/cereal.csv
+data/medals_per_year_country_sport_sex.json
+data/medals_per_year_country_sport_sex.csv
+*.xml
+try_plots/country-flags-master/.idea/country-flags-master.iml
+try_plots/country-flags-master/package.json
+try_plots/country-flags-master/README.md

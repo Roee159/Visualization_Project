@@ -1,0 +1,56 @@
+,Year,City,Season,Country,Continent,Hemisphere,latitude,longitude
+0,1896,Athina,Summer,Greece,Europe,North,37.9839412,23.7283052
+1,1900,Paris,Summer,France,Europe,North,48.8566969,2.3514616
+2,1904,St. Louis,Summer,USA,America,North,38.6268039,-90.1994097
+3,1906,Athina,Summer,Greece,Europe,North,37.9839412,23.7283052
+4,1908,London,Summer,UK,Europe,North,51.5073219,-0.1276474
+5,1912,Stockholm,Summer,Sweden,Europe,North,59.3251172,18.0710935
+6,1920,Antwerpen,Summer,Belgium,Europe,North,51.2211097,4.3997081
+7,1924,Paris,Summer,France,Europe,North,48.8566969,2.3514616
+8,1924,Chamonix,Winter,France,Europe,North,45.9246705,6.8727506
+9,1928,Sankt Moritz,Winter,Switzerland,Europe,North,46.4960592,9.8386578
+10,1928,Amsterdam,Summer,Netherlands,Europe,North,52.3727598,4.8936041
+11,1932,Los Angeles,Summer,USA,America,North,34.0536909,-118.2427666
+12,1932,Lake Placid,Winter,USA,America,North,44.279621,-73.979874
+13,1936,Berlin,Summer,Germany,Europe,North,52.5170365,13.3888599
+14,1936,Garmisch-Partenkirchen,Winter,Germany,Europe,North,47.4938359,11.103992
+15,1948,London,Summer,UK,Europe,North,51.5073219,-0.1276474
+16,1948,Sankt Moritz,Winter,Switzerland,Europe,North,46.4960592,9.8386578
+17,1952,Helsinki,Summer,Finland,Europe,North,60.1674098,24.9425769
+18,1952,Oslo,Winter,Norway,Europe,North,59.9133301,10.7389701
+19,1956,Melbourne,Summer,Australia,Oceania,South,-37.8142176,144.9631608
+20,1956,Cortina d'Ampezzo,Winter,Italy,Europe,North,46.5383332,12.1373506
+22,1960,Roma,Summer,Italy,Europe,North,41.8933203,12.4829321
+23,1960,Squaw Valley,Winter,USA,America,North,36.705929499999996,-119.20015587604176
+24,1964,Innsbruck,Winter,Austria,Europe,North,47.26951525,11.397137204221064
+25,1964,Tokyo,Summer,Japan,Asia,North,35.6828387,139.7594549
+26,1968,Grenoble,Winter,France,Europe,North,45.1875602,5.7357819
+27,1968,Mexico City,Summer,Mexico,America,North,19.4326296,-99.1331785
+28,1972,Sapporo,Winter,Japan,Asia,North,43.061936,141.3542924
+29,1972,Munich,Summer,Germany,Europe,North,48.1371079,11.5753822
+30,1976,Montreal,Summer,Canada,America,North,45.4972159,-73.6103642
+31,1976,Innsbruck,Winter,Austria,Europe,North,47.26951525,11.397137204221064
+32,1980,Moskva,Summer,Russia,Europe,North,55.4792046,37.3273304
+33,1980,Lake Placid,Winter,USA,America,North,44.279621,-73.979874
+34,1984,Sarajevo,Winter,Bosnia and Herzegovina,Europe,North,43.8519774,18.3866868
+35,1984,Los Angeles,Summer,USA,America,North,34.0536909,-118.2427666
+36,1988,Calgary,Winter,Canada,America,North,51.0534234,-114.0625892
+37,1988,Seoul,Summer,South Korea,Asia,North,37.5666791,126.9782914
+38,1992,Barcelona,Summer,Spain,Europe,North,41.3828939,2.1774322
+39,1992,Albertville,Winter,France,Europe,North,45.6754622,6.3925417
+40,1994,Lillehammer,Winter,Norway,Europe,North,61.1333408,10.426585544131413
+41,1996,Atlanta,Summer,USA,America,North,33.7490987,-84.3901849
+42,1998,Nagano,Winter,Japan,Asia,North,36.1143945,138.0319015
+43,2000,Sydney,Summer,Australia,Oceania,South,-33.8548157,151.2164539
+44,2002,Salt Lake City,Winter,USA,America,North,40.7596198,-111.8867975
+45,2004,Athina,Summer,Greece,Europe,North,37.9839412,23.7283052
+46,2006,Torino,Winter,Italy,Europe,North,45.0677551,7.6824892
+47,2008,Beijing,Summer,China,Asia,North,39.906217,116.3912757
+48,2010,Vancouver,Winter,Canada,America,North,49.2608724,-123.1139529
+49,2012,London,Summer,UK,Europe,North,51.5073219,-0.1276474
+50,2014,Sochi,Winter,Russia,Europe,North,43.5854823,39.723109
+51,2016,Rio de Janeiro,Summer,Brazil,America,South,-22.9110137,-43.2093727
+52,1916,Berlin,Summer,Germany,Cancelled,North,52.5200, 13.4050
+53,1940,Tokyo/Helsinki,Summer,Japan/Finland,Cancelled,North,35.6828387,139.7594549
+54,1944,London,Summer,UK,Cancelled,North,51.5073219,-0.1276474
+55,2020,Tokyo,Summer,Japan,Cancelled,North,35.6828387,139.7594549

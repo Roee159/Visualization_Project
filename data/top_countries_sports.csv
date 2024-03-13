@@ -1,0 +1,258 @@
+Season,Sport,NOC,medals,rank
+Summer,Archery,KOR,69,1.0
+Summer,Archery,USA,57,2.0
+Summer,Archery,BEL,52,3.0
+Summer,Archery,FRA,48,4.0
+Summer,Archery,CHN,19,5.0
+Summer,Art Competitions,GER,26,1.0
+Summer,Art Competitions,FRA,15,2.0
+Summer,Art Competitions,ITA,14,3.0
+Summer,Art Competitions,AUT,10,4.0
+Summer,Athletics,USA,1080,1.0
+Summer,Athletics,GBR,338,2.0
+Summer,Athletics,URS,242,3.0
+Summer,Athletics,JAM,156,4.0
+Summer,Athletics,GER,154,5.0
+Summer,Badminton,CHN,64,1.0
+Summer,Badminton,KOR,35,2.0
+Summer,Badminton,INA,28,3.0
+Summer,Badminton,DEN,12,4.5
+Summer,Badminton,MAS,12,4.5
+Summer,Baseball,CUB,112,1.0
+Summer,Baseball,USA,68,2.0
+Summer,Baseball,JPN,64,3.0
+Summer,Baseball,KOR,48,4.0
+Summer,Baseball,AUS,24,5.0
+Summer,Basketball,USA,341,1.0
+Summer,Basketball,URS,146,2.0
+Summer,Basketball,YUG,84,3.0
+Summer,Basketball,AUS,60,4.5
+Summer,Basketball,ESP,60,4.5
+Summer,Beach Volleyball,BRA,26,1.0
+Summer,Beach Volleyball,USA,20,2.0
+Summer,Beach Volleyball,GER,6,3.0
+Summer,Beach Volleyball,AUS,4,4.5
+Summer,Beach Volleyball,CHN,4,4.5
+Summer,Boxing,USA,113,1.0
+Summer,Boxing,CUB,73,2.0
+Summer,Boxing,GBR,56,3.0
+Summer,Boxing,URS,51,4.0
+Summer,Boxing,ITA,47,5.0
+Summer,Canoeing,GER,163,1.0
+Summer,Canoeing,HUN,158,2.0
+Summer,Canoeing,URS,87,3.0
+Summer,Canoeing,ROU,67,4.0
+Summer,Canoeing,SWE,57,5.0
+Summer,Cycling,GBR,182,1.0
+Summer,Cycling,FRA,151,2.0
+Summer,Cycling,ITA,124,3.0
+Summer,Cycling,GER,94,4.0
+Summer,Cycling,AUS,84,5.0
+Summer,Diving,USA,140,1.0
+Summer,Diving,CHN,88,2.0
+Summer,Diving,GER,30,3.0
+Summer,Diving,RUS,27,4.0
+Summer,Diving,SWE,21,5.0
+Summer,Equestrianism,GER,143,1.0
+Summer,Equestrianism,USA,132,2.0
+Summer,Equestrianism,SWE,85,3.0
+Summer,Equestrianism,GBR,83,4.0
+Summer,Equestrianism,FRA,79,5.0
+Summer,Fencing,ITA,359,1.0
+Summer,Fencing,FRA,310,2.0
+Summer,Fencing,HUN,236,3.0
+Summer,Fencing,URS,146,4.0
+Summer,Fencing,POL,82,5.0
+Summer,Figure Skating,GBR,10,1.0
+Summer,Figure Skating,SWE,6,2.0
+Summer,Figure Skating,NOR,4,3.0
+Summer,Figure Skating,GER,3,4.0
+Summer,Figure Skating,FIN,2,5.0
+Summer,Football,BRA,136,1.0
+Summer,Football,GER,104,2.0
+Summer,Football,USA,102,3.0
+Summer,Football,URS,87,4.0
+Summer,Football,HUN,79,5.0
+Summer,Gymnastics,URS,288,1.0
+Summer,Gymnastics,USA,194,2.0
+Summer,Gymnastics,JPN,166,3.0
+Summer,Gymnastics,ROU,135,4.0
+Summer,Gymnastics,NOR,121,5.0
+Summer,Handball,KOR,96,1.0
+Summer,Handball,NOR,85,2.0
+Summer,Handball,URS,84,3.0
+Summer,Handball,FRA,77,4.0
+Summer,Handball,YUG,72,5.0
+Summer,Hockey,NED,255,1.0
+Summer,Hockey,AUS,188,2.0
+Summer,Hockey,GER,182,3.0
+Summer,Hockey,IND,173,4.0
+Summer,Hockey,GBR,163,5.0
+Summer,Ice Hockey,USA,11,1.0
+Summer,Ice Hockey,CAN,8,2.5
+Summer,Ice Hockey,TCH,8,2.5
+Summer,Judo,JPN,84,1.0
+Summer,Judo,FRA,49,2.0
+Summer,Judo,KOR,43,3.0
+Summer,Judo,CUB,36,4.0
+Summer,Judo,NED,23,5.5
+Summer,Judo,URS,23,5.5
+Summer,Modern Pentathlon,HUN,38,1.0
+Summer,Modern Pentathlon,URS,27,2.0
+Summer,Modern Pentathlon,SWE,25,3.0
+Summer,Modern Pentathlon,USA,17,4.0
+Summer,Modern Pentathlon,ITA,13,5.0
+Summer,Rhythmic Gymnastics,RUS,45,1.0
+Summer,Rhythmic Gymnastics,BLR,21,2.0
+Summer,Rhythmic Gymnastics,BUL,18,3.0
+Summer,Rhythmic Gymnastics,ESP,12,4.5
+Summer,Rhythmic Gymnastics,ITA,12,4.5
+Summer,Rowing,USA,375,1.0
+Summer,Rowing,GBR,270,2.0
+Summer,Rowing,GER,236,3.0
+Summer,Rowing,CAN,203,4.0
+Summer,Rowing,GDR,184,5.0
+Summer,Sailing,GBR,143,1.0
+Summer,Sailing,USA,140,2.0
+Summer,Sailing,NOR,125,3.0
+Summer,Sailing,FRA,117,4.0
+Summer,Sailing,SWE,113,5.0
+Summer,Shooting,USA,193,1.0
+Summer,Shooting,SWE,126,2.0
+Summer,Shooting,GBR,99,3.0
+Summer,Shooting,NOR,77,4.0
+Summer,Shooting,FRA,69,5.0
+Summer,Swimming,USA,1078,1.0
+Summer,Swimming,AUS,401,2.0
+Summer,Swimming,GER,156,3.0
+Summer,Swimming,GDR,152,4.0
+Summer,Swimming,GBR,127,5.0
+Summer,Synchronized Swimming,RUS,54,1.0
+Summer,Synchronized Swimming,JPN,52,2.0
+Summer,Synchronized Swimming,CHN,31,3.0
+Summer,Synchronized Swimming,USA,30,4.0
+Summer,Synchronized Swimming,CAN,26,5.0
+Summer,Table Tennis,CHN,81,1.0
+Summer,Table Tennis,KOR,33,2.0
+Summer,Table Tennis,GER,16,3.0
+Summer,Table Tennis,JPN,10,4.0
+Summer,Table Tennis,SGP,7,5.0
+Summer,Taekwondo,KOR,19,1.0
+Summer,Taekwondo,CHN,10,2.0
+Summer,Taekwondo,USA,9,3.0
+Summer,Taekwondo,TPE,8,4.0
+Summer,Tennis,GBR,67,1.0
+Summer,Tennis,USA,62,2.0
+Summer,Tennis,FRA,38,3.0
+Summer,Tennis,ESP,19,4.0
+Summer,Tennis,GER,15,5.0
+Summer,Trampolining,CHN,11,1.0
+Summer,Trampolining,CAN,7,2.0
+Summer,Trampolining,RUS,4,3.0
+Summer,Trampolining,GER,2,4.5
+Summer,Trampolining,UKR,2,4.5
+Summer,Triathlon,AUS,5,2.0
+Summer,Triathlon,GBR,5,2.0
+Summer,Triathlon,SUI,5,2.0
+Summer,Triathlon,NZL,3,4.0
+Summer,Tug-Of-War,GBR,40,1.0
+Summer,Tug-Of-War,SWE,19,2.0
+Summer,Tug-Of-War,USA,14,3.0
+Summer,Tug-Of-War,GER,9,4.0
+Summer,Volleyball,URS,141,1.0
+Summer,Volleyball,BRA,120,2.5
+Summer,Volleyball,USA,120,2.5
+Summer,Volleyball,JPN,101,4.0
+Summer,Volleyball,ITA,72,5.0
+Summer,Water Polo,HUN,172,1.0
+Summer,Water Polo,USA,150,2.0
+Summer,Water Polo,ITA,120,3.0
+Summer,Water Polo,URS,78,4.0
+Summer,Water Polo,YUG,76,5.0
+Summer,Weightlifting,URS,62,1.0
+Summer,Weightlifting,CHN,57,2.0
+Summer,Weightlifting,USA,42,3.0
+Summer,Weightlifting,BUL,36,4.0
+Summer,Weightlifting,POL,32,5.0
+Summer,Wrestling,USA,128,1.0
+Summer,Wrestling,URS,116,2.0
+Summer,Wrestling,SWE,86,3.0
+Summer,Wrestling,FIN,85,4.0
+Summer,Wrestling,BUL,69,5.5
+Summer,Wrestling,JPN,69,5.5
+Winter,Alpine Skiing,AUT,114,1.0
+Winter,Alpine Skiing,SUI,59,2.0
+Winter,Alpine Skiing,FRA,45,3.0
+Winter,Alpine Skiing,USA,44,4.0
+Winter,Alpine Skiing,GER,31,5.0
+Winter,Biathlon,GER,80,1.0
+Winter,Biathlon,NOR,62,2.0
+Winter,Biathlon,RUS,57,3.0
+Winter,Biathlon,FRA,40,4.0
+Winter,Biathlon,URS,37,5.0
+Winter,Bobsleigh,SUI,92,1.0
+Winter,Bobsleigh,USA,74,2.0
+Winter,Bobsleigh,GER,63,3.0
+Winter,Bobsleigh,GDR,38,4.0
+Winter,Bobsleigh,ITA,32,5.0
+Winter,Cross Country Skiing,NOR,164,1.0
+Winter,Cross Country Skiing,FIN,141,2.0
+Winter,Cross Country Skiing,SWE,123,3.0
+Winter,Cross Country Skiing,URS,111,4.0
+Winter,Cross Country Skiing,ITA,61,5.0
+Winter,Curling,CAN,48,1.0
+Winter,Curling,SWE,29,2.0
+Winter,Curling,SUI,23,3.0
+Winter,Curling,GBR,17,4.0
+Winter,Curling,NOR,14,5.0
+Winter,Figure Skating,USA,65,1.0
+Winter,Figure Skating,RUS,51,2.0
+Winter,Figure Skating,URS,44,3.0
+Winter,Figure Skating,CAN,43,4.0
+Winter,Figure Skating,AUT,25,5.0
+Winter,Freestyle Skiing,USA,21,1.0
+Winter,Freestyle Skiing,CAN,18,2.0
+Winter,Freestyle Skiing,FRA,12,3.0
+Winter,Freestyle Skiing,CHN,8,4.5
+Winter,Freestyle Skiing,NOR,8,4.5
+Winter,Ice Hockey,CAN,340,1.0
+Winter,Ice Hockey,USA,265,2.0
+Winter,Ice Hockey,SWE,217,3.0
+Winter,Ice Hockey,FIN,174,4.0
+Winter,Ice Hockey,URS,168,5.0
+Winter,Luge,GER,47,1.0
+Winter,Luge,GDR,37,2.0
+Winter,Luge,AUT,27,3.0
+Winter,Luge,ITA,24,4.0
+Winter,Luge,FRG,14,5.0
+Winter,Nordic Combined,NOR,40,1.0
+Winter,Nordic Combined,AUT,29,2.0
+Winter,Nordic Combined,FIN,23,3.5
+Winter,Nordic Combined,GER,23,3.5
+Winter,Nordic Combined,JPN,8,5.5
+Winter,Nordic Combined,SUI,8,5.5
+Winter,Short Track Speed Skating,KOR,73,1.0
+Winter,Short Track Speed Skating,CAN,70,2.0
+Winter,Short Track Speed Skating,CHN,49,3.0
+Winter,Short Track Speed Skating,USA,42,4.0
+Winter,Short Track Speed Skating,ITA,21,5.0
+Winter,Skeleton,USA,8,1.0
+Winter,Skeleton,GBR,6,2.0
+Winter,Skeleton,CAN,4,3.0
+Winter,Skeleton,RUS,3,4.5
+Winter,Skeleton,SUI,3,4.5
+Winter,Ski Jumping,AUT,43,1.0
+Winter,Ski Jumping,NOR,39,2.0
+Winter,Ski Jumping,FIN,34,3.0
+Winter,Ski Jumping,GER,26,4.0
+Winter,Ski Jumping,JPN,20,5.0
+Winter,Snowboarding,USA,24,1.0
+Winter,Snowboarding,SUI,12,2.0
+Winter,Snowboarding,FRA,10,3.0
+Winter,Snowboarding,CAN,7,4.0
+Winter,Snowboarding,AUT,6,5.0
+Winter,Speed Skating,NED,117,1.0
+Winter,Speed Skating,NOR,80,2.0
+Winter,Speed Skating,USA,70,3.0
+Winter,Speed Skating,URS,60,4.0
+Winter,Speed Skating,GER,47,5.0
