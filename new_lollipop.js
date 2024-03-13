@@ -53,8 +53,6 @@ var clickYear = function(d){
       city = d.City
 
       load_data();
-      //update_medals(year);
-      //update_sports(year, season);
       update_title(year, city, country);
       d3.queue()
           .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
@@ -88,27 +86,7 @@ var svg2 = d3.select("#my_dataviz_timeline")
   .append("g")
     .attr("transform",
           "translate(" + 10 + "," + 1.5*margin.top + ")");
-
-// add titles of winter and summer to timeline
-var g_timeline = svg5.append("g")
-              .attr("class", "legendColor")
-              .attr("transform", "translate(-10,-20)");
-
-              g_timeline.append("text")
-              .attr("class", "caption")
-              .attr("x", 35 + width_timeline/2 - dx)
-              .attr("y", 0)
-              .text("Summer")
-              .attr("font-family", "Oswald");
-
-              g_timeline.append("text")
-              .attr("class", "caption")
-              .attr("x", 35 + width_timeline/2 + dx)
-              .attr("y", 0)
-              .text("Winter")
-              .attr("font-family", "Oswald");
-
-
+ 
 // Initialize the X axis
 var x = d3.scaleLinear()
   .range([0, width_timeline]);
