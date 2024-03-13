@@ -39,14 +39,14 @@ function upload_info_games(year, city, country, edition, season, n_countries, n_
       .attr('y', 10)
       .attr('width', 150)
       .attr('height', 150)
-      .attr("xlink:href", "logos/" + year + "-" + season + ".jpg");
+      .attr("xlink:href", "/website/logos/" + year + "-" + season + ".jpg");
   } else {
     info_games.append("svg:image")
       .attr('x', 50)
       .attr('y', 10)
       .attr('width', 150)
       .attr('height', 150)
-      .attr("xlink:href", "logos/" + year + "-" + season + ".png");
+      .attr("xlink:href", "/website/logos/" + year + "-" + season + ".png");
   }
 
   if (edition == 1 | edition == 21) {
@@ -101,7 +101,7 @@ function upload_info_games(year, city, country, edition, season, n_countries, n_
   }
 
   info_games.append("svg:image")
-            .attr("xlink:href", "country-flags-master/svg/" + country + ".svg")
+            .attr("xlink:href", "/website/country-flags-master/svg/" + country + ".svg")
             .attr("x", 250)
             .attr("y", 55)
             .attr("width", "30")
@@ -320,7 +320,7 @@ function ready(error, topo, markers) {
         .attr("y", function(d){ return projection([d.long, d.lat])[1]-29})
         .attr('width', 15)
         .attr('height', 30)
-        .attr("xlink:href", "images/location_torch_crop.png")
+        .attr("xlink:href", "/website/images/location_torch_crop.png")
         .on("mouseover", tip2.show)
         .on("mouseleave", tip2.hide);
 

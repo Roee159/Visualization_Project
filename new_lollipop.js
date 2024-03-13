@@ -198,7 +198,7 @@ function update(selectedVar) {
         .attr('y', function(d) { return y(d.Year) - 15; })
         .attr('width', 30)
         .attr('height', 30)
-        .attr("xlink:href", function(d){return "logos/" + d.Continent + "_rings.png";})
+        .attr("xlink:href", function(d){return "/website/logos/" + d.Continent + "_rings.png";})
         .on("mouseover", tip_timeline.show)
         .on("mouseleave", tip_timeline.hide)
         .on("click", function(d){return clickYear(d);});
@@ -214,7 +214,7 @@ function update(selectedVar) {
           .attr("x", -22) // 100 is where the first dot appears. 25 is the distance between dots
           .attr('width', 30)
           .attr('height', 30)
-          .attr("xlink:href", function(d){return "logos/" + d + "_rings.png";})
+          .attr("xlink:href", function(d){return "/website/logos/" + d + "_rings.png";})
 
       // Add labels beside legend dots
       svg4.selectAll("mylabels")
