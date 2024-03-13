@@ -58,7 +58,7 @@ var clickYear = function(d){
       update_title(year, city, country);
       d3.queue()
           .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-          .defer(d3.json, "data/host_cities_markers.json")
+          .defer(d3.json, "/website/data/host_cities_markers.json")
           .await(ready);
 }
 
@@ -155,7 +155,7 @@ var y2 = d3.scaleBand()
 function update(selectedVar) {
 
   // Parse the Data
-  d3.csv("data/location_host_cities.csv", function(data) {
+  d3.csv("/website/data/location_host_cities.csv", function(data) {
 
     // Y axis
     y.domain(domain_function(63, 2))

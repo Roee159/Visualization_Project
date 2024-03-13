@@ -160,7 +160,7 @@ function update_sports(year, season) {
             .attr("font-weight", 100);
 
 
-  d3.json("data/sports_game_details.json",function(data){
+  d3.json("/website/data/sports_game_details.json",function(data){
 
     // add info for cancelled or postponed events
     if (game == "1916 Summer" | game == "1940 Summer" | game == "1944 Summer" | game == "2020 Summer"){
@@ -233,10 +233,10 @@ function update_sports(year, season) {
         .on("click", function(s){
           // on click, show events
           display_sport_detail(game,data[game][s]);
-          d3.json("data/info_sports.json", function(info) {
+          d3.json("/website/data/info_sports.json", function(info) {
                   update_bars(info[year][s], s);
                   });
-          d3.json("data/medals_country.json", function(top) {
+          d3.json("/website/data/medals_country.json", function(top) {
                   update_top_countries(top[year][s]);
                 });
           });
