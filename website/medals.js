@@ -289,32 +289,7 @@ function stackedBar (selection, data) {
       .text(d  => d.value + ' %')
       .style('fill', (d, i) => colors[i+2]);
 
-    // add the labels
-    selection.selectAll('.text-label3')
-      .data(data[2])
-      .enter().append('text')
-      .attr('class', 'text-label')
-      .attr('text-anchor', 'middle')
-      .attr("font-family", "Oswald")
-      .attr("font-size", "15px")
-      .attr('text-anchor', 'middle')
-      .attr('x', 30 + widthBars/2)
-      .attr('y', barHeight - 25 + 100 + 100)
-      .style('fill', 'black')
-      .text("Male vs Female Athletes");
 
-      // fourth bar - individual vs team
-      selection.selectAll('rect4')
-        .data(data[3])
-        .enter().append('rect')
-        .attr('class', 'rect-stacked')
-        .attr('stroke', 'black')
-        .attr('stroke-width', 0.4)
-        .attr('x', d => xScale(d.cumulative) + 30 + widthBars*1.5)
-        .attr('y', halfBarHeight + 100 + 100)
-        .attr('height', barHeight)
-        .attr('width', d => xScale(d.value))
-        .style('fill', (d, i) => colors[i+2]);
 
         // add values on bar
         selection.selectAll('.text-value4')
@@ -358,64 +333,6 @@ var country_tip = d3.tip()
 
 // call tooltip
 svg.call(country_tip);
-
-// function to show the top countries for each sport
-function update_top_countries(top_data) {
-  const img_size = 40;
-  svg_bars.selectAll("image").remove();
-
-  // update top1 countries
-  svg_bars.selectAll("countryFlags")
-          .data(top_data["Gold"])
-          .enter()
-          .append("svg:image")
-          .attr("x", (width_svg_bars/2) - 100 - img_size/2)
-          .attr("y", (d,i) => i*(img_size+10) + 390)
-          .style("text-anchor", "middle")
-          .attr("width", img_size)
-          .attr("height", img_size)
-          .attr("xlink:href", function(d,i) { return "country-flags-master/svg/" + d["Country"] + ".svg" })
-          .on("mouseover", country_tip.show)
-          .on("mouseleave", country_tip.hide);
-
-  // update top2 countries
-  svg_bars.selectAll("countryFlags")
-          .data(top_data["Silver"])
-          .enter()
-          .append("svg:image")
-          .attr("x", (width_svg_bars/2) - img_size/2)
-          .attr("y", (d,i) => i*(img_size+10) + 390)
-          .style("text-anchor", "middle")
-          .attr("width", img_size)
-          .attr("height", img_size)
-          .attr("xlink:href", d => "country-flags-master/svg/" + d["Country"] + ".svg")
-          .on("mouseover", country_tip.show)
-          .on("mouseleave", country_tip.hide);
-
-    // update top3 countries
-    svg_bars.selectAll("countryFlags")
-            .data(top_data["Bronze"])
-            .enter()
-            .append("svg:image")
-            .attr("x", (width_svg_bars/2) + 100 - img_size/2)
-            .attr("y", (d,i) => i*(img_size+10) + 390)
-            .style("text-anchor", "middle")
-            .attr("width", img_size)
-            .attr("height", img_size)
-            .attr("xlink:href", d => "country-flags-master/svg/" + d["Country"] + ".svg")
-            .on("mouseover", country_tip.show)
-            .on("mouseleave", country_tip.hide);
-
-    // adapt heaight accordint to number of top countries (ties)
-    var height_flags =  Math.max(top_data["Gold"].length, top_data["Silver"].length, top_data["Bronze"].length);
-
-    svg_svg3.attr("height", function(){return (heighMedals() + (height_flags - 3)*60);})
-    if (height_flags > 3){
-      g_subsports.attr("transform",
-              "translate(" + translateX_bars() + ",  " + (400+ margin_sports.top + 2*margin_sports.bottom + (height_flags-3)*60) + ")");
-    }
-
-}
 
 // adapt width svg
 var width_svg_bars = Math.min(550, (width_sports/2 + 50 ))
