@@ -11,7 +11,7 @@ var year = 1896
 var season = 'Summer'
 var city = "Athina"
 var country = "Greece"
-
+ 
 // initialize map
 var country_code = d3.map()
 
@@ -28,7 +28,7 @@ var info_games = d3.select("#logo_games")
         .attr("height", 250)
         .attr("transform", "translate("+ (width_adjusted/2 - 750/2) + ","+ 10 +")");
 
-// function to update games header
+// function to update header
 function upload_info_games(year, city, country, edition, season, n_countries, n_athletes) {
   info_games.selectAll("text").remove();
   info_games.selectAll("image").remove();
@@ -39,14 +39,14 @@ function upload_info_games(year, city, country, edition, season, n_countries, n_
       .attr('y', 10)
       .attr('width', 150)
       .attr('height', 150)
-      .attr("xlink:href", "/website/logos/" + year + "-" + season + ".jpg");
+      .attr("xlink:href", "logos/" + year + "-" + season + ".jpg");
   } else {
     info_games.append("svg:image")
       .attr('x', 50)
       .attr('y', 10)
       .attr('width', 150)
       .attr('height', 150)
-      .attr("xlink:href", "/website/logos/" + year + "-" + season + ".png");
+      .attr("xlink:href", "logos/" + year + "-" + season + ".png");
   }
 
   if (edition == 1 | edition == 21) {
@@ -101,7 +101,7 @@ function upload_info_games(year, city, country, edition, season, n_countries, n_
   }
 
   info_games.append("svg:image")
-            .attr("xlink:href", "/website/country-flags-master/svg/" + country + ".svg")
+            .attr("xlink:href", "country-flags-master/svg/" + country + ".svg")
             .attr("x", 250)
             .attr("y", 55)
             .attr("width", "30")
@@ -141,6 +141,7 @@ upload_info_games(year, "Athina", country, 1, season, 12, 176);
 
 // Map and projection
 var path = d3.geoPath();
+
 var projection = d3.geoNaturalEarth()
     .scale(width_adjusted / 2 / Math.PI)
     .translate([width_adjusted / 2, height / 2])
@@ -167,59 +168,11 @@ var colorScale = d3.scaleThreshold()
     .domain([1, 11, 51, 101, 201, 301, 401, 501])
     .range(colorScheme);
 
-// Legend
-var g = svg.append("g")
-    .attr("class", "legendThreshold")
-    .attr("transform", "translate(20,100)");
-
-    g.append("text")
-    .attr("class", "caption")
-    .attr("x", 0)
-    .attr("y", -6)
-    .text("Athletes");
-
-
-var labels = ['0', '1-10', '11-50', '50-100', '101-200', '201-300', '301-400', '401-500', '> 500'];
-var legend = d3.legendColor()
-    .labels(function (d) { return labels[d.i]; })
-    .shapePadding(4)
-    .scale(colorScale);
-
-// tooltip countries
-var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-10, 0])
-    .html(function(d) {
-            let name = d.properties.name;
-            let info = data[name];
-            var part = 0
-            if(info != undefined) { part = info.participants; }
-            return "<strong>Country: " + name +" <br> Participants: </strong> <span>" + part + "</span>";
-          })
-
-// tooltip host city
-var tip2 = d3.tip()
-    .attr('class', 'd3-tip2')
-    .offset([-10, 0])
-    .html(function(d) {
-            let city = d.city;
-            let country = d.country;
-            return "<strong>Host city: </strong>" + city + ", " + country;
-          })
-
-// Legend
-svg.select(".legendThreshold")
-    .call(legend);
-
-// call Tooltips
-svg.call(tip);
-svg.call(tip2);
-
 // Load external data and boot
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-    .defer(d3.json, "/website/data/host_cities_markers.json")
-    .defer(d3.csv, "/website/data/regions_participants3.csv",
+    .defer(d3.json, "data/host_cities_markers.json")
+    .defer(d3.csv, "data/regions_participants3.csv",
         function(d) { // load data from csv
             if ('$' + d.Year in full_data){
                 var yearKey = '$' + d.Year;
@@ -265,12 +218,12 @@ function load_data(){
 function ready(error, topo, markers) {
     if (error) throw error;
 
-
     svg.selectAll("path").remove();
     //svg.selectAll("g").remove();  // to see the legend
 
     // Draw the map
     var delta_x = 10
+
     var g_map = svg.append("g")
         .attr("class", "countries")
         .attr("transform", "translate(" + delta_x + ",0)")
@@ -280,7 +233,7 @@ function ready(error, topo, markers) {
             .attr("fill", function (d){
                 // check if country inside data
                 if (data[d.properties.name] != undefined){
-
+                    
                     d.total = data[d.properties.name]['participants'] || 0;
                 } else {
                     d.total = 0;
@@ -291,25 +244,54 @@ function ready(error, topo, markers) {
             })
             .attr("d", path)
 
-            
           .attr("stroke-opacity", 0.1)
           .style("stroke", "gray")
           .attr("class", function(d){ return "Country" } )
           .style("fill-opacity", 1)
-          .on("mouseover", tip.show)
-          .on("mouseleave", tip.hide);
-
-    // Update title
-    g.selectAll(".title")
-    .text(season + " Olympic Games Year " + year + " held in " + city + ", " + country);
-
-
+  
+        
+   // Create data for circles:
+var markers = [
+    {long: 9.083, lat: 42.149}, // corsica
+    {long: 7.26, lat: 43.71}, // nice
+    {long: 2.349, lat: 48.864}, // Paris
+    {long: -1.397, lat: 43.664}, // Hossegor
+    {long: 3.075, lat: 50.640}, // Lille
+    {long: -3.83, lat: 58}, // Morlaix
+  ];
+   
+          svg
+          .selectAll("myCircles")
+          .data(markers)
+          .enter()
+          .append("circle")
+            .attr("cx", function(d){ return projection([d.long, d.lat])[0] })
+            .attr("cy", function(d){ return projection([d.long, d.lat])[1] })
+            .attr("r", 14)
+            .style("fill", "69b3a2")
+            .attr("stroke", "#69b3a2")
+            .attr("stroke-width", 3)
+            .attr("fill-opacity", .4)
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     // remove the previous circle in host city
     svg.selectAll("image").remove()
-
     // get the data for host city
     var data_marker = [markers[year][season]]
-
     // update host city location
     svg.selectAll("myLocation")
       .data(data_marker)
@@ -320,9 +302,7 @@ function ready(error, topo, markers) {
         .attr("y", function(d){ return projection([d.long, d.lat])[1]-29})
         .attr('width', 15)
         .attr('height', 30)
-        .attr("xlink:href", "/website/images/location_torch_crop.png")
-        .on("mouseover", tip2.show)
-        .on("mouseleave", tip2.hide);
+        .attr("xlink:href", "images/location_torch_crop.png")
 
     var edition = markers[year][season]['edition']
     var n_athletes = markers[year][season]['n_athletes']

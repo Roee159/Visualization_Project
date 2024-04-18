@@ -53,10 +53,12 @@ var clickYear = function(d){
       city = d.City
 
       load_data();
+      //update_medals(year);
+      update_sports(year, season);
       update_title(year, city, country);
       d3.queue()
           .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-          .defer(d3.json, "/website/data/host_cities_markers.json")
+          .defer(d3.json, "data/host_cities_markers.json")
           .await(ready);
 }
 
@@ -106,6 +108,7 @@ var g_timeline = svg5.append("g")
               .text("Winter")
               .attr("font-family", "Oswald");
 
+
 // Initialize the X axis
 var x = d3.scaleLinear()
   .range([0, width_timeline]);
@@ -152,7 +155,7 @@ var y2 = d3.scaleBand()
 function update(selectedVar) {
 
   // Parse the Data
-  d3.csv("/website/data/location_host_cities.csv", function(data) {
+  d3.csv("data/location_host_cities.csv", function(data) {
 
     // Y axis
     y.domain(domain_function(63, 2))
@@ -195,7 +198,7 @@ function update(selectedVar) {
         .attr('y', function(d) { return y(d.Year) - 15; })
         .attr('width', 30)
         .attr('height', 30)
-        .attr("xlink:href", function(d){return "/website/logos/" + d.Continent + "_rings.png";})
+        .attr("xlink:href", function(d){return "logos/" + d.Continent + "_rings.png";})
         .on("mouseover", tip_timeline.show)
         .on("mouseleave", tip_timeline.hide)
         .on("click", function(d){return clickYear(d);});
@@ -211,7 +214,7 @@ function update(selectedVar) {
           .attr("x", -22) // 100 is where the first dot appears. 25 is the distance between dots
           .attr('width', 30)
           .attr('height', 30)
-          .attr("xlink:href", function(d){return "/website/logos/" + d + "_rings.png";})
+          .attr("xlink:href", function(d){return "logos/" + d + "_rings.png";})
 
       // Add labels beside legend dots
       svg4.selectAll("mylabels")
