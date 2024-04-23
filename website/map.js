@@ -169,6 +169,8 @@ var colorScale = d3.scaleThreshold()
     .domain([1, 11, 51, 101, 201, 301, 401, 501])
     .range(colorScheme);
 
+    var countryCoordData; // Global variable to store the loaded country coordinate data
+
 // Load external data and boot
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
@@ -209,44 +211,46 @@ d3.queue()
 
             data = full_data['$' + year][season]
         })
-    
     .await(ready);
 
 // function to load the data
 function load_data(){
     data = full_data['$' + year][season];
 }
+ 
+
 function getCoordinates(countryData, countries) {
     const coordinates = {};
   
-    // Iterate over each country in the countries dataset
-    for (let countryName in countries) {
-      // Skip 'other' property
-      if (countryName !== 'other') {
-        // Find the corresponding entry in the countryData array
-        const countryEntry = countryData.find(entry => entry['Country'] === countryName);
-        if (countryEntry) {
-          // If a matching entry is found, extract latitude and longitude
-          coordinates[countryName] = {
-            latitude: parseFloat(countryEntry['Latitude (average)']),
-            longitude: parseFloat(countryEntry['Longitude (average)'])
-          };
-        } else {
-          // If no matching entry is found, log an error
-          console.log(`No coordinates found for ${countryName}`);
-        }
-      }
+    // Check if countryData is defined and is an array
+    if (!Array.isArray(countryData)) {
+      console.error('Country data is not available or is not in the expected format.');
+      return coordinates; // Return empty coordinates object
     }
+  
+    // Iterate over each entry in the countryData array
+    countryData.forEach(entry => {
+      const countryName = entry['Country'];
+      // Check if the country exists in the countries dataset
+      if (countries[countryName]) {
+        coordinates[countryName] = {
+          latitude: parseFloat(entry['Latitude (average)']),
+          longitude: parseFloat(entry['Longitude (average)'])
+        };
+      } else {
+        console.log(`No matching entry found for ${countryName}`);
+      }
+    });
   
     return coordinates;
   }
 // update map, title and header
-function ready(error, topo, markers,coord) { console.log(topo.features, "markers: ", markers, "coord: ", coord)
+function ready(error, topo, markers,coord) { 
     if (error) throw error;
  
-    svg.selectAll("circle").remove()
+    console.log(topo.features, "markers: ", markers, "coord: ", coord)
     svg.selectAll("path").remove();
- 
+    svg.selectAll("circle").remove()
 
     // Draw the map
     var delta_x = 10
@@ -266,8 +270,8 @@ function ready(error, topo, markers,coord) { console.log(topo.features, "markers
           
           console.log("my olymic data: ");
           console.log(data);
-
-        var data_circles = getCoordinates(coord,data);
+          var data_circles;
+         data_circles = getCoordinates(coord,data);
 
         console.log("my circles data: ");
         console.log(data_circles);

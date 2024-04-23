@@ -59,6 +59,7 @@ var clickYear = function(d){
       d3.queue()
           .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
           .defer(d3.json, "data/host_cities_markers.json")
+          .defer(d3.csv, "data/country-coord.csv")
           .await(ready);
 }
 
