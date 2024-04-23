@@ -1,3 +1,4 @@
+
 // set dimensions
 var width = 1200
 var height = 700
@@ -172,6 +173,7 @@ var colorScale = d3.scaleThreshold()
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
     .defer(d3.json, "data/host_cities_markers.json")
+    .defer(d3.csv, "data/country-coord.csv")
     .defer(d3.csv, "data/regions_participants3.csv",
         function(d) { // load data from csv
             if ('$' + d.Year in full_data){
@@ -207,85 +209,88 @@ d3.queue()
 
             data = full_data['$' + year][season]
         })
+    
     .await(ready);
 
 // function to load the data
 function load_data(){
     data = full_data['$' + year][season];
 }
-
+function getCoordinates(countryData, countries) {
+    const coordinates = {};
+  
+    // Iterate over each country in the countries dataset
+    for (let countryName in countries) {
+      // Skip 'other' property
+      if (countryName !== 'other') {
+        // Find the corresponding entry in the countryData array
+        const countryEntry = countryData.find(entry => entry['Country'] === countryName);
+        if (countryEntry) {
+          // If a matching entry is found, extract latitude and longitude
+          coordinates[countryName] = {
+            latitude: parseFloat(countryEntry['Latitude (average)']),
+            longitude: parseFloat(countryEntry['Longitude (average)'])
+          };
+        } else {
+          // If no matching entry is found, log an error
+          console.log(`No coordinates found for ${countryName}`);
+        }
+      }
+    }
+  
+    return coordinates;
+  }
 // update map, title and header
-function ready(error, topo, markers) {
+function ready(error, topo, markers,coord) { console.log(topo.features, "markers: ", markers, "coord: ", coord)
     if (error) throw error;
-
+ 
+    svg.selectAll("circle").remove()
     svg.selectAll("path").remove();
-    //svg.selectAll("g").remove();  // to see the legend
+ 
 
     // Draw the map
     var delta_x = 10
-
+    var pathBuilder = d3.geoPath(projection);
     var g_map = svg.append("g")
-        .attr("class", "countries")
-        .attr("transform", "translate(" + delta_x + ",0)")
         .selectAll("path")
         .data(topo.features)
-        .enter().append("path")
-            .attr("fill", function (d){
-                // check if country inside data
-                if (data[d.properties.name] != undefined){
-                    
-                    d.total = data[d.properties.name]['participants'] || 0;
-                } else {
-                    d.total = 0;
-                }
-                //d.total = data[d.properties.name] || 0;
-                // Set the color
-                return colorScale(d.total);
-            })
-            .attr("d", path)
-
-          .attr("stroke-opacity", 0.1)
-          .style("stroke", "gray")
-          .attr("class", function(d){ return "Country" } )
-          .style("fill-opacity", 1)
+        .enter()
+        .append("path")
+        .attr("d", function (eachFeature){
+            return pathBuilder(eachFeature);
+        })
+        .attr("stroke-opacity", 0.1)
+        .style("stroke", "gray")
+        .style("fill-opacity", 0.3)
   
+          
+          console.log("my olymic data: ");
+          console.log(data);
+
+        var data_circles = getCoordinates(coord,data);
+
+        console.log("my circles data: ");
+        console.log(data_circles);
+
+        svg.append("g")
+        .selectAll("circle")
+        .data(Object.entries(data_circles))
+        .enter()
+        .append("circle")
+        .attr('cx', function(d) {
+            return projection([d[1].longitude, d[1].latitude])[0];
+        })
+        .attr('cy', function(d) {
+            return projection([d[1].longitude, d[1].latitude])[1];
+        })
+        .attr('r', 5) // Adjust the radius for better visibility
+        .style('fill', 'red'); // Add fill color for better visibility
+    
+        console.log("SVG circles:");
+        console.log(svg.selectAll("circle").nodes());
         
-   // Create data for circles:
-var markers = [
-    {long: 9.083, lat: 42.149}, // corsica
-    {long: 7.26, lat: 43.71}, // nice
-    {long: 2.349, lat: 48.864}, // Paris
-    {long: -1.397, lat: 43.664}, // Hossegor
-    {long: 3.075, lat: 50.640}, // Lille
-    {long: -3.83, lat: 58}, // Morlaix
-  ];
-   
-          svg
-          .selectAll("myCircles")
-          .data(markers)
-          .enter()
-          .append("circle")
-            .attr("cx", function(d){ return projection([d.long, d.lat])[0] })
-            .attr("cy", function(d){ return projection([d.long, d.lat])[1] })
-            .attr("r", 14)
-            .style("fill", "69b3a2")
-            .attr("stroke", "#69b3a2")
-            .attr("stroke-width", 3)
-            .attr("fill-opacity", .4)
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+        console.log("SVG paths:");
+        console.log(svg.selectAll("path").nodes());
    
    
     // remove the previous circle in host city
