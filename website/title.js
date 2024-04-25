@@ -1,4 +1,4 @@
-// set dimensions
+// set dimensions for title svg
 var width_title = Math.min(1800, window.innerWidth) - 270;
 var height_title = 80;
 
@@ -23,7 +23,7 @@ function update_title(year, city, country) {
     .attr("x", width_title / 2)
     .attr("y", 50)
     .text(
-      "Discovering the Olympic games of " +
+      "Visualization the Olympic Games of " +
         year +
         " (" +
         city +

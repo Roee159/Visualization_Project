@@ -1,4 +1,3 @@
-
 // set the dimensions and margins of the graph
 var margin_sports = {top: 20, right: 30, bottom: 70, left: 30},
     width_sports= Math.min(1800,window.innerWidth) - 300 - margin_sports.left - margin_sports.right,
@@ -6,7 +5,7 @@ var margin_sports = {top: 20, right: 30, bottom: 70, left: 30},
 
 
 // declare variables
-var dy = 50;
+var dy = 40;
 var sports = {}
 var selectedSport = []
 var deltaXText = 0
@@ -460,7 +459,6 @@ var svg_bars = svg_svg3.append("g")
                 .attr("transform", function(){
                   return "translate(" + translateX_bars() + ", -" + 0 + ")";});
 
-
 var g_subsports = svg_svg3.append("g")
                       .attr("width", width_svg_bars)
                       .attr("height", 280)
@@ -695,9 +693,7 @@ function update_sports(year, season) {
                   .attr("font-size", function(){return sizeTextBig()})
                   .attr("font-weight", 200);
       }
-
     });
-
     }
 
 // Initialize plot
