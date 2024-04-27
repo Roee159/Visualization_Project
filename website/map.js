@@ -379,7 +379,7 @@ function ready(error, topo, markers, coord, athletes) {
     svg
       .selectAll("circle") // Select all circles
       .attr("transform", transform); // Apply the zoom transformation to circles
-  }
+}
   // Draw the map
   var delta_x = 10;
   var pathBuilder = d3.geoPath(projection);
