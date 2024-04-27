@@ -165,16 +165,19 @@ var colorScale = d3.scaleThreshold()
     .domain([1, 11, 51, 101, 201, 301, 401, 501])
     .range(colorScheme);
 
-
+    
 // tooltip countries
 var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
-    .html(function(d) {
+    .html(function(d) { console.log(d[1]); 
         let name = d[0];
-           console.log(name);
-           return "<strong>Country: " + name;
-          })
+        let total = d[1]['total'];
+        let goldM = d[1]['gold'];
+        let silver = d[1]['silver'];
+        let bronze = d[1]['bronze'];
+        return "<strong>Country: " + name +"<br>Total Medals: " + total +"<br>🥇Gold Medals: " + goldM+"<br>🥈Silver Medals: " + silver+"<br>🥉Bronze Medals: " + bronze;
+    })
 
 // tooltip host city
 var tip2 = d3.tip()
@@ -194,6 +197,7 @@ d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
     .defer(d3.json, "data/host_cities_markers.json")
     .defer(d3.csv, "data/country-coord.csv")
+    .defer(d3.csv, 'data/athlete_events.csv')
     .defer(d3.csv, "data/regions_participants3.csv",
         function(d) { // load data from csv
             if ('$' + d.Year in full_data){
@@ -230,6 +234,59 @@ d3.queue()
 function load_data(){
     data = full_data['$' + year][season];
 }
+
+function medalCount(athleteEventData, countries) {
+    // Extract country names from the countries object
+    var countryNames = Object.keys(countries);
+    
+    // Group data by country and count medals for both summer and winter Olympics
+    var medalCountByCountry = {};
+
+    athleteEventData.forEach(d => {
+        var country = d.Team;
+
+        if (country === "United States")
+            country = "USA";
+        if (country === "Great Britain")
+            country = "United Kingdom";
+
+        if (d.Medal !== 'NA') {
+            if (countryNames.includes(country)) { // Check if the country is in the extracted country names array
+                medalCountByCountry[country] = medalCountByCountry[country] || { total: 0, gold: 0, silver: 0, bronze: 0 };
+                medalCountByCountry[country].total += 1;
+                if (d.Medal === 'Gold') {
+                    medalCountByCountry[country].gold += 1;
+                } else if (d.Medal === 'Silver') {
+                    medalCountByCountry[country].silver += 1;
+                } else if (d.Medal === 'Bronze') {
+                    medalCountByCountry[country].bronze += 1;
+                }
+            }
+        }
+    });
+    console.log(medalCountByCountry);
+    return medalCountByCountry;
+}
+
+function combineArrays(data1, data2) {
+    // Ensure both inputs are objects
+    if (typeof data1 !== 'object' || typeof data2 !== 'object') {
+        console.error('Both input parameters should be objects.');
+        return {};
+    }
+
+    var combinedData = {};
+
+    // Iterate through data1 (assumed to have medal counts)
+    for (var country in data1) {
+        if (data1.hasOwnProperty(country)) {
+            combinedData[country] = Object.assign({}, data1[country], data2[country]);
+        }
+    }
+
+    return combinedData;
+}
+
 // A helper function for creating the circles, for each country participating in this 
 // year's games returns its coordinates from the file country-coord.csv
 function getCoordinates(countryData, countries) {
@@ -255,7 +312,7 @@ function getCoordinates(countryData, countries) {
     return coordinates;
   }
 // update map, title and header to user choose.
-function ready(error, topo, markers,coord) { 
+function ready(error, topo, markers,coord,athletes) { 
     if (error) throw error;
  
     console.log(topo.features, "markers: ", markers, "coord: ", coord)
@@ -277,19 +334,22 @@ function ready(error, topo, markers,coord) {
         .style("stroke", "gray")
         .style("fill-opacity", 0.3)
         
-    
         console.log("my olymic data: ");
         console.log(data);
 
         var data_circles;
         data_circles = getCoordinates(coord,data);
+        var data_medals;
+        data_medals = medalCount(athletes,data);
+        // Call the combineArrays function to merge data_circles and data_medals
+        var combinedData = combineArrays(data_circles, data_medals);
 
-        console.log("my circles data: ");
-        console.log(data_circles);
+        console.log("my comine data: ");
+        console.log(combinedData);
 
         svg.append("g")
         .selectAll("circle")
-        .data(Object.entries(data_circles))
+        .data(Object.entries(combinedData))
         .enter()
         .append("circle")
         .attr('cx', function(d) { return projection([d[1].longitude, d[1].latitude])[0]; })
@@ -299,7 +359,6 @@ function ready(error, topo, markers,coord) {
         .on("mouseover", tip.show)
         .on("mouseleave", tip.hide);
 
-        
         console.log("SVG circles:");
         console.log(svg.selectAll("circle").nodes());
         
