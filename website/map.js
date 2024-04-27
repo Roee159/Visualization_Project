@@ -165,6 +165,30 @@ var colorScale = d3.scaleThreshold()
     .domain([1, 11, 51, 101, 201, 301, 401, 501])
     .range(colorScheme);
 
+
+// tooltip countries
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+        let name = d[0];
+           console.log(name);
+           return "<strong>Country: " + name;
+          })
+
+// tooltip host city
+var tip2 = d3.tip()
+    .attr('class', 'd3-tip2')
+    .offset([-10, 0])
+    .html(function(d) {
+            let city = d.city;
+            let country = d.country;
+            return "<strong>Host city: </strong>" + city + ", " + country;
+          })
+
+// call Tooltips
+svg.call(tip);
+svg.call(tip2);
 // Load external data
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
@@ -252,7 +276,8 @@ function ready(error, topo, markers,coord) {
         .attr("stroke-opacity", 0.1)
         .style("stroke", "gray")
         .style("fill-opacity", 0.3)
-  
+        
+    
         console.log("my olymic data: ");
         console.log(data);
 
@@ -270,8 +295,11 @@ function ready(error, topo, markers,coord) {
         .attr('cx', function(d) { return projection([d[1].longitude, d[1].latitude])[0]; })
         .attr('cy', function(d) { return projection([d[1].longitude, d[1].latitude])[1]; })
         .attr('r', 5) // Adjust the radius for better visibility
-        .style('fill', 'orange'); // Add fill color for better visibility
-    
+        .style('fill', 'orange') // Add fill color for better visibility
+        .on("mouseover", tip.show)
+        .on("mouseleave", tip.hide);
+
+        
         console.log("SVG circles:");
         console.log(svg.selectAll("circle").nodes());
         
@@ -293,6 +321,8 @@ function ready(error, topo, markers,coord) {
         .attr('width', 15)
         .attr('height', 30)
         .attr("xlink:href", "images/location_torch_crop.png")
+        .on("mouseover", tip2.show)
+        .on("mouseleave", tip2.hide);
 
     var edition = markers[year][season]['edition']
     var n_athletes = markers[year][season]['n_athletes']
