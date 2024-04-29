@@ -13,6 +13,26 @@ var openNewTab = function openInNewTab(url) {
   var win = window.open(url, "_blank");
   win.focus();
 };
+// add icon to olympic ioc site 
+title_games
+.append("svg:image")
+.attr('x', 20)
+.attr('y', 10)
+.attr('width', 70)
+.attr('height', 70)
+.attr("xlink:href", "images/ioc.png")
+.on("click", function(){openNewTab("https://olympics.com/ioc")});
+
+// add icon to paris 2024 site 
+title_games
+.append("svg:image")
+.attr('x', 110)
+.attr('y', 20)
+.attr('width', 50)
+.attr('height', 50)
+.attr("xlink:href", "images/paris2024.png")
+.on("click", function(){openNewTab("https://olympics.com/en/paris-2024")});
+
 
 // change the title when selecting a game
 function update_title(year, city, country) {
@@ -22,15 +42,7 @@ function update_title(year, city, country) {
     .append("text")
     .attr("x", width_title / 2)
     .attr("y", 50)
-    .text(
-      "Visualization the Olympic Games of " +
-        year +
-        " (" +
-        city +
-        ", " +
-        country +
-        ")"
-    )
+    .text("Visualization the Olympic Games of " + year + " (" + city + ", " + country + ")" )
     .attr("font-family", "Oswald")
     .attr("font-size", function () {
       if (width_title < 700) {
@@ -44,5 +56,5 @@ function update_title(year, city, country) {
     .attr("text-anchor", "middle");
 }
 
-// initialize
+// initialize map with the first olympic data
 update_title(1896, "Athina", "Greece");

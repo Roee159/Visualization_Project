@@ -100,7 +100,7 @@ Hungary,47,20
 Iceland,65,-18
 India,20,77
 Indonesia,-5,120
-"Iran, Islamic Republic of",32,53
+Iran,32,53
 Iraq,33,44
 Ireland,53,-8
 Isle of Man,54.23,-4.55
@@ -114,7 +114,7 @@ Kazakhstan,48,68
 Kenya,1,38
 Kiribati,1.4167,173
 "Korea, Democratic People's Republic of",40,127
-"Korea, Republic of",37,127.5
+South Korea,37,127.5
 Kuwait,29.3375,47.6581
 Kyrgyzstan,41,75
 Lao People's Democratic Republic,18,105
@@ -179,7 +179,8 @@ Puerto Rico,18.25,-66.5
 Qatar,25.5,51.25
 Réunion,-21.1,55.6
 Romania,46,25
-Russian Federation,60,100
+Russia,60,100
+Soviet Union,55,37
 Rwanda,-2,30
 "Saint Helena, Ascension and Tristan da Cunha",-15.9333,-5.7
 Saint Kitts and Nevis,17.3333,-62.75
@@ -210,7 +211,7 @@ Svalbard and Jan Mayen,78,20
 Swaziland,-26.5,31.5
 Sweden,62,15
 Switzerland,47,8
-Syrian Arab Republic,35,38
+Syria,35,38
 "Taiwan, Province of China",23.5,121
 Tajikistan,39,71
 "Tanzania, United Republic of",-6,35
@@ -228,8 +229,8 @@ Tuvalu,-8,178
 Uganda,1,32
 Ukraine,49,32
 United Arab Emirates,24,54
-United Kingdom,54,-2
-United States,38,-97
+England,54,-2
+USA,38,-97
 United States Minor Outlying Islands,19.2833,166.6
 Uruguay,-33,-56
 Uzbekistan,41,64

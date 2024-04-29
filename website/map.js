@@ -260,6 +260,7 @@ d3.queue()
 function load_data() {
   data = full_data["$" + year][season];
 }
+
 // Function to count medals for each country in the provided athlete event data
 function medalCount(athleteEventData, countries) {
     // Extract country names from the countries object
@@ -282,6 +283,7 @@ function medalCount(athleteEventData, countries) {
       if (country === "Canada-1" || country === "Canada-2") country = "Canada";
       if (country === "South Korea-1"  || country === "outh Korea-3") country = "South Korea";
       if (country === "Russia-1" || country === "Russia-2") country = "Russia";
+      if (country === "Soviet Union") country = "Russia";
       if (country === "Argentina-1") country = "Argentina";
       if (country === "Japan-2"  || country === "Japan-1" || country === "Japan-3") country = "Germany";
       if (country === "Germany-2") country = "Germany";
@@ -325,7 +327,6 @@ function combineArrays(data1, data2) {
       combinedData[country] = Object.assign({}, data1[country], data2[country]);
     }
   }
-  console.log("combineeeeeeeeeee: " + combinedData);
   return combinedData;
 }
 // A helper Function for creating the circles, for each country participating in this
@@ -346,9 +347,7 @@ function getCoordinates(countryData, countries) {
         latitude: parseFloat(entry["Latitude (average)"]),
         longitude: parseFloat(entry["Longitude (average)"]),
         };
-    } else {
-      console.log(`No matching entry found for ${countryName}`);
-    }
+    } 
   });
   return coordinates;
 }
@@ -356,7 +355,6 @@ function getCoordinates(countryData, countries) {
 function ready(error, topo, markers, coord, athletes) {
   if (error) throw error;
 
-  console.log(topo.features, "markers: ", markers, "coord: ", coord);
   // remove the previous map and circles.
   svg.selectAll("path").remove();
   svg.selectAll("circle").remove();
@@ -394,30 +392,80 @@ function ready(error, topo, markers, coord, athletes) {
     .style("stroke", "gray")
     .style("fill-opacity", 0.3);
 
-  console.log("my olymic data: ");
-  console.log(data);
-
-  var data_circles = getCoordinates(coord, data);
-  var data_medals = medalCount(athletes, data);
+  var data_circles = getCoordinates(coord, data); 
+  var data_medals = medalCount(athletes, data); 
   // Call the combineArrays function to merge data_circles and data_medals
   var combinedData = combineArrays(data_circles, data_medals);
-
-  console.log("my comine data: ");
-  console.log(combinedData);
 
   // Define a function to calculate radius based on total medals
   function calculateRadius(totalMedals) {
     // Define your logic here to calculate the radius scale the radius based on the total number of medals of country
-    return Math.sqrt(totalMedals) * 2;  
+    return 5 + (Math.sqrt(totalMedals) * 2);  
   }
 
+// Define a function to determine the continent based on latitude and longitude
+  function getContinentName(latitude, longitude) {
+    // Define the continent mapping
+    const continents = {
+        "NA": "North America",
+        "SA": "South America",
+        "EU": "Europe",
+        "AF": "Africa",
+        "AS": "Asia",
+        "OC": "Australia",
+        "AN": "Antarctica"
+    };
+
+    // Calculate the continent code based on latitude and longitude
+    const continentCode = getContinentCode(latitude, longitude);
+
+    // Return the continent name from the mapping
+    return continents[continentCode] || "Unknown";
+}
+
+// Function to determine the continent code based on latitude and longitude coordinates
+function getContinentCode(latitude, longitude) {
+  // Determine the continent code based on latitude and longitude ranges
+  if (latitude >= 0 && latitude <= 90) {
+    if (longitude >= -169.5 && longitude <= -65.7) return "NA"; // North America
+    if (longitude >= -90 && longitude <= -35) return "SA"; // South America
+    if (longitude >= -24 && longitude <= 44) return "EU"; // Europe
+    if (longitude >= 44 && longitude <= 180) return "AS"; // Asia
+  }
+  if (latitude >= -90 && latitude < 0) {
+    if (longitude >= -169.5 && longitude <= -35) return "SA"; // South America
+    if (longitude >= -25 && longitude <= 51) return "AF"; // Africa
+    if (longitude >= -180 && longitude <= -90) return "NA"; // North America
+    if (longitude >= -90 && longitude <= 0) return "NA"; // North America
+  }
+  if (latitude >= -90 && latitude < 0) {
+    if (longitude >= 112 && longitude <= 180) return "OC"; // Oceania
+  }
+  return "AN"; // Antarctica (covers the remaining ranges)
+}
+
+// Define a color scheme for each continent based on Olympic colors
+var continentColorScheme = {
+  "Europe": "#0077ff", // Blue
+  "Asia": "#ffd700",   // Yellow
+  "North America": "#ff0000", // Red
+  "South America": "#ff0000", // Green
+  "Africa": "#000000", // Black
+  "Australia": "#00ff00", // Pink
+  "Antarctica": "#e37017" // White
+};
+
+// Define a function to map continent names to their respective colors
+function getContinentColor(continentName) {
+  return continentColorScheme[continentName] || "#e37017"; // Default color for unknown continents
+}
   svg
     .append("g")
     .selectAll("circle")
     .data(Object.entries(combinedData))
     .enter()
     .append("circle")
-   // .attr("transform", (d) => `translate(${path.centroid(d)})`)
+     // .attr("transform", (d) => `translate(${path.centroid(d)})`)
     .attr("cx", function (d) { return projection([d[1].longitude, d[1].latitude])[0]; })
     .attr("cy", function (d) { return projection([d[1].longitude, d[1].latitude])[1]; })
     .attr("r", function (d) {
@@ -429,7 +477,6 @@ function ready(error, topo, markers, coord, athletes) {
         return calculateRadius(d[1]["total"]); // You can define your own function to calculate radius based on total medals
       }
     })
-    .style("fill", "orange") // Add fill color
     .on("mouseover", function (d) {
       // Change fill color when mouse hovers over the circle and Show tooltip
       d3.select(this).style("fill", "#e37017");
@@ -437,9 +484,17 @@ function ready(error, topo, markers, coord, athletes) {
     })
     .on("mouseleave", function () {
       // Reset fill color when mouse leaves the circle and hide the tooltip
-      d3.select(this).style("fill", "orange");
+      d3.select(this).style("fill", d => getContinentColor(getContinentName(d[1].latitude, d[1].longitude)));
       tip.hide();
-    });
+    })
+    .attr("fill", d => getContinentColor(getContinentName(d[1].latitude, d[1].longitude))) // Add fill color
+    .attr("stroke", function(d){
+      if(+d[1]["total"] || d[1]["total"] === 0){
+        return "black";
+      }else return"none";
+    }) 
+    .attr("stroke-width", 0.1) 
+    .attr("fill-opacity", 0.6);
 
   // remove the previous circle in host city
   svg.selectAll("image").remove();
